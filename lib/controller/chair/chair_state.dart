@@ -41,3 +41,5 @@ class ColorChanged extends ChairState {}
 class PriceRangeChanged extends ChairState {}
 
 class DateSortChanged extends ChairState {}
+
+class WishlistIsEmpty extends ChairState {}

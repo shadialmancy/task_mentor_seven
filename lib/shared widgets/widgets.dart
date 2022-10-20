@@ -22,7 +22,7 @@ Widget customSearchTextField(
   );
 }
 
-Widget customTextButton(var size, VoidCallback function) {
+Widget customTextButton(var size, VoidCallback function, String hintText) {
   return TextButton(
       onPressed: function,
       style: TextButton.styleFrom(
@@ -32,7 +32,7 @@ Widget customTextButton(var size, VoidCallback function) {
           backgroundColor: secondary,
           fixedSize: Size(size.width, 60)),
       child: Text(
-        "Checkout",
+        hintText,
         style: TextStyle(color: primary),
       ));
 }

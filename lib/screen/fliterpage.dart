@@ -4,8 +4,6 @@ import 'package:task_mentor_seven/controller/chair/chair_cubit.dart';
 import 'package:task_mentor_seven/shared%20themes/colors.dart';
 import 'package:task_mentor_seven/shared%20themes/textstyle.dart';
 
-import '../shared widgets/widgets.dart';
-
 class FliterPage extends StatefulWidget {
   const FliterPage({super.key});
 
@@ -32,7 +30,6 @@ class _FliterPageState extends State<FliterPage> {
         padding: const EdgeInsets.all(30.0),
         child: BlocBuilder<ChairCubit, ChairState>(
           builder: (context, state) {
-            var size = MediaQuery.of(context).size;
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,

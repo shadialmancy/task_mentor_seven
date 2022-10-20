@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_mentor_seven/screen/cartpage.dart';
 import 'package:task_mentor_seven/screen/productpage.dart';
 import 'package:task_mentor_seven/screen/searchpage.dart';
+import 'package:task_mentor_seven/shared%20themes/customdrawer.dart';
 import 'package:task_mentor_seven/shared%20themes/textstyle.dart';
 import 'package:task_mentor_seven/shared%20widgets/widgets.dart';
 import '../controller/chair/chair_cubit.dart';
@@ -16,9 +17,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  var scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const CustomDrawPage(),
+      key: scaffoldKey,
       backgroundColor: primary.withOpacity(0.9),
       body: buildBody(),
     );
@@ -134,7 +138,11 @@ class _HomePageState extends State<HomePage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        IconButton(onPressed: () {}, icon: const Icon(Icons.menu)),
+        IconButton(
+            onPressed: () {
+              scaffoldKey.currentState?.openDrawer();
+            },
+            icon: const Icon(Icons.menu)),
         Container(
           width: 40,
           height: 40,

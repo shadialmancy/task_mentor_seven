@@ -117,24 +117,63 @@ class ChairCubit extends Cubit<ChairState> {
     emit(RemoveItemFromCart());
   }
 
-  // void fliterFindChair(){
-  //   switch()
-  // }
+  List fliterSortDateChair() {
+    List tempChair = chair;
+    tempChair.sort(
+        ((a, b) => DateTime.parse(a.date).compareTo(DateTime.parse(b.date))));
+    switch (selectedDateSort) {
+      case "Newest to latest":
+        tempChair = tempChair.reversed.toList();
+        return tempChair;
+      default:
+        return tempChair;
+    }
+  }
 
   void findChair(String itemName) {
     if (itemName != " ") {
-      // chair.sort()
       List<Map<String, dynamic>> itemFound = [];
-      for (var element in chair) {
-        if (element.name.toLowerCase().contains(itemName.toLowerCase())) {
-          itemFound
-              .add({"name": element.name, "index": chair.indexOf(element)});
-        }
-      }
-      if (itemFound.isNotEmpty) {
-        emit(ChairFound(itemlist: itemFound));
-      } else {
-        emit(ChairNotFound());
+      switch (selectedPriceRange) {
+        case ">100":
+          for (var element in fliterSortDateChair()) {
+            if (element.name.toLowerCase().contains(itemName.toLowerCase()) &&
+                double.parse(element.price) > 100) {
+              itemFound
+                  .add({"name": element.name, "index": chair.indexOf(element)});
+            }
+          }
+          if (itemFound.isNotEmpty) {
+            emit(ChairFound(itemlist: itemFound));
+          } else {
+            emit(ChairNotFound());
+          }
+          break;
+        case ">200":
+          for (var element in fliterSortDateChair()) {
+            if (element.name.toLowerCase().contains(itemName.toLowerCase()) &&
+                double.parse(element.price) > 200) {
+              itemFound
+                  .add({"name": element.name, "index": chair.indexOf(element)});
+            }
+          }
+          if (itemFound.isNotEmpty) {
+            emit(ChairFound(itemlist: itemFound));
+          } else {
+            emit(ChairNotFound());
+          }
+          break;
+        default:
+          for (var element in fliterSortDateChair()) {
+            if (element.name.toLowerCase().contains(itemName.toLowerCase())) {
+              itemFound
+                  .add({"name": element.name, "index": chair.indexOf(element)});
+            }
+          }
+          if (itemFound.isNotEmpty) {
+            emit(ChairFound(itemlist: itemFound));
+          } else {
+            emit(ChairNotFound());
+          }
       }
     } else {
       emit(ChairNotFound());

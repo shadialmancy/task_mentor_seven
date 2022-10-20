@@ -178,7 +178,7 @@ class _CartPageState extends State<CartPage> {
           const SizedBox(
             height: 15,
           ),
-          customTextButton(size, () {})
+          customTextButton(size, () {}, "Checkout")
         ],
       ),
     );

@@ -5,6 +5,7 @@ class ChairModel {
   String description;
   String price;
   String rating;
+  String date;
   ChairModel({
     required this.key,
     required this.name,
@@ -12,6 +13,7 @@ class ChairModel {
     required this.description,
     required this.price,
     required this.rating,
+    required this.date,
   });
 
   factory ChairModel.fromMap(String key, Map<String, dynamic> map) {
@@ -22,6 +24,7 @@ class ChairModel {
       image: map['image'],
       description: map['description'],
       price: map['price'],
+      date: map['date'],
     );
   }
 }
